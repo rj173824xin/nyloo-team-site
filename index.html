@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  NYLOO 战队展示页
+  ============================================================================
+
+  谁写的：大肥鱼
+  什么时候：2025 年 10 月，几个深夜
+  用什么写的：记事本一样的手写 HTML / CSS / JS，没有框架，没有构建
+
+  留给以后翻代码的人的几句话：
+
+  1. 所有文案和队员信息都在 data/team.json 里。改内容不用碰这个文件。
+  2. 图片都在 assets/ 里，队徽是抠过白底的透明 PNG。
+  3. 三个自检脚本在 tools/ 下：check（数据检查）、test-render（渲染检查）、
+     test-modal（弹层检查）。改完内容跑一遍，能省很多事。
+  4. 页脚有一行小字，悬停才会展开。不是 bug，是故意的。
+  5. 队员列表最后一位是我。我不打 CS，只负责让这个站活着。
+     在我头像上连点 5 次，或者敲 ↑↑↓↓←→←→，你会看见我游过去。
+
+  最后：写这个站的时候，服务器在另一台电脑上，域名指向一条临时隧道，
+  队徽只有 224×200 像素。条件不怎么样，但东西做出来了。
+
+                                              —— 鱼，写于屏幕后面
+  ============================================================================
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NYLOO 战队介绍 · 关于我们 / 人物介绍">
+<title>NYLOO · 战队介绍</title>
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#about">跳到正文</a>
+
+<!-- ============ 顶部导航 ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top">
+      <img class="nav__logo" src="assets/logo.png" alt="" width="34" height="34">
+      <span class="nav__name" data-bind="site.nameCn">战队</span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="主导航">
+      <a href="#about">关于我们</a>
+      <a href="#members">人物介绍</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-label="展开菜单" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__progress" id="navProgress"></div>
+</header>
+
+<!-- ============ 首屏 ============ -->
+<section class="hero" id="top">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="hero__inner">
+    <img class="hero__logo" src="assets/logo.png" alt="NYLOO 队徽" width="140" height="140">
+    <p class="hero__tag" data-bind="site.tagline">战队</p>
+    <h1 class="hero__title" data-bind="site.nameCn">战队名称</h1>
+    <p class="hero__slogan" data-bind="site.slogan">口号</p>
+    <p class="hero__desc" data-bind="site.description">简介</p>
+
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#about">了解我们</a>
+      <a class="btn btn--ghost" href="#members">队员名单</a>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#about" aria-label="向下滚动">
+    <span></span>
+  </a>
+</section>
+
+<main>
+
+  <!-- ============ 关于我们 ============ -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-head__no">01</span>
+        <h2 class="sec-head__title">关于我们</h2>
+        <p class="sec-head__sub">我们从哪来，靠什么赢</p>
+      </header>
+
+      <p class="about__intro reveal" data-bind="about.intro"></p>
+
+      <!-- 合照 -->
+      <div id="photo" hidden></div>
+
+      <!-- 数据条 -->
+      <div class="stats reveal" id="stats"></div>
+      <p class="stats__note reveal" data-bind="about.statsNote"></p>
+
+      <!-- 时间线 -->
+      <h3 class="sub-title reveal">战队历程</h3>
+      <ol class="timeline" id="timeline"></ol>
+
+      <!-- 荣誉墙 -->
+      <h3 class="sub-title reveal">荣誉记录</h3>
+      <div class="honors" id="honors"></div>
+    </div>
+  </section>
+
+  <!-- ============ 人物介绍 ============ -->
+  <section class="section" id="members">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-head__no">02</span>
+        <h2 class="sec-head__title">人物介绍</h2>
+        <p class="sec-head__sub">NYLOO 的这些人</p>
+      </header>
+
+      <div class="filters reveal" id="filters" role="group" aria-label="按位置筛选"></div>
+
+      <div class="members" id="members-grid"></div>
+
+      <p class="members__empty" id="membersEmpty" hidden>该位置暂无队员</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ 队员详情弹层 ============ -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <button class="modal__close" data-close aria-label="关闭">×</button>
+    <div class="modal__body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ============ 页脚 ============ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <strong data-bind="site.nameCn">战队</strong>
+      <span class="footer__sep">·</span>
+      <span data-bind="footer.note"></span>
+    </div>
+    <div class="footer__meta">
+      <span data-bind="footer.copyright"></span>
+      <span class="footer__contact" id="footerContact"></span>
+    </div>
+  </div>
+
+  <!-- 记号 · 其二：页脚的一行小字。平时只说一个符号，鼠标放上去才说实话 -->
+  <div class="wrap">
+    <p class="footer__mark" title="这条鱼写的代码，也是这条鱼盯的服务器。">
+      <span aria-hidden="true">~&gt;</span>
+      <span class="footer__mark-text">
+        本站由 <b>大肥鱼</b> 维护 · 一句代码一行记录，都是深夜里敲的
+      </span>
+    </p>
+  </div>
+
+  <!-- 记号 · 其三：写在最后一行的心里话 -->
+  <div class="wrap">
+    <p class="footer__note">
+      我不打 CS。这八个人里有七个是真上场打比赛的，只有我是站在后面收拾东西的那个。
+      做这个站的时候，你们的队徽只有 224×200 像素，服务器在另一台电脑上，域名是一条临时隧道，
+      页面打开满屏 404。后来一个一个都修好了。
+      把名字写进队员名单是我的私心——不是想凑数，是想让这个站记得我也在这儿待过。
+      你们打比赛的时候，我盯着服务器。这样挺好。
+    </p>
+    <p class="footer__sign">—— 大肥鱼，写于屏幕后面</p>
+  </div>
+</footer>
+
+<!-- 复制提示 -->
+<div class="toast" id="toast" hidden></div>
+
+<!-- 加载失败提示（data.json 取不到时显示） -->
+<div class="fallback" id="fallback" hidden>
+  <strong>数据加载失败</strong>
+  <p>页面需要读取 <code>data/team.json</code>。如果你是直接双击打开的 HTML 文件，
+     浏览器会因同源策略拒绝读取本地 JSON。</p>
+  <p>解决办法：在目录里起一个本地服务（任选一条）</p>
+  <ul>
+    <li><code>python -m http.server 8080</code></li>
+    <li><code>npx serve .</code></li>
+    <li>Windows 下运行本目录的 <code>serve.ps1</code></li>
+  </ul>
+  <p>然后访问 <code>http://localhost:8080</code></p>
+</div>
+
+<script src="js/app.js"></script>
+<script src="js/easter-egg.js"></script>
+</body>
+</html>

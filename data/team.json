@@ -1,0 +1,182 @@
+{
+  "site": {
+    "name": "NYLOO",
+    "nameCn": "NYLOO",
+    "slogan": "五个人的默契，一整局的胜负",
+    "tagline": "成立于 2025.01.17 · CS 战队",
+    "logo": "assets/logo.png",
+    "description": "NYLOO 是一支 CS 战队。我们记录每一次训练、每一场比赛，以及这支队伍是怎么从零开始的。",
+    "founded": "2025-01-17",
+    "contact": {
+      "email": "team@example.com",
+      "qq": "123456789"
+    }
+  },
+  "about": {
+    "intro": "NYLOO 成立于 2025 年 1 月 17 日。一支 CS 战队，从五个人凑齐那天开始，把训练、复盘、配合当成日常。这里记录我们是谁、打过什么。",
+    "stats": [
+      {
+        "label": "成立年份",
+        "value": 2025,
+        "suffix": ""
+      },
+      {
+        "label": "现役队员",
+        "value": 18,
+        "suffix": "人"
+      },
+      {
+        "label": "胜率",
+        "value": 78,
+        "suffix": "%"
+      },
+      {
+        "label": "队内荣誉",
+        "value": 1,
+        "suffix": "项"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2025.01.17",
+        "title": "NYLOO 成立",
+        "text": "五个人凑齐，队名定为 NYLOO。"
+      },
+      {
+        "date": "2025.08.24",
+        "title": "首个队内荣誉",
+        "text": "N1na（李伟煊）获颁「世一狙」称号。"
+      }
+    ],
+    "honors": [
+      {
+        "year": "2025.08.24",
+        "name": "李伟煊（N1na）· 反恐精英2 顶级破局",
+        "result": "世一狙",
+        "image": "assets/honor-cert.jpg",
+        "note": "在反恐精英2中表现优异，多次为 Nyloo 战队创造顶级破局，荣获称号「世一狙」。"
+      }
+    ],
+    "photo": {
+      "src": "assets/group-photo.jpg",
+      "caption": "NYLOO 的合影"
+    },
+    "statsNote": "18 人为战队在册总人数，含替补与二队；本页展示的是核心阵容。"
+  },
+  "members": {
+    "roles": [
+      "全部",
+      "战队创始人",
+      "指挥",
+      "狙击手",
+      "道具辅助手",
+      "Rifler",
+      "突破手",
+      "自由人",
+      "后勤"
+    ],
+    "list": [
+      {
+        "id": "qianyan",
+        "name": "qianyan",
+        "role": "战队创始人",
+        "rank": "",
+        "avatar": "assets/avatar-qianyan.jpg",
+        "main": [],
+        "bio": "cs群的群主，但是不打cs。",
+        "stats": {},
+        "link": "https://dawan.net"
+      },
+      {
+        "id": "N1na",
+        "name": "N1na",
+        "role": "狙击手",
+        "rank": "",
+        "avatar": "assets/avatar-n1na.jpg",
+        "main": [
+          "AWP"
+        ],
+        "bio": "liweixuan，天津医科大暴力炸金，awp的掌控者，s1mple的孝子，金字塔的尖，方程式的解，李鑫杰的爹。",
+        "stats": {
+          "绰号": "世一狙"
+        },
+        "link": "https://dawan.net"
+      },
+      {
+        "id": "Nyloo_肘可",
+        "name": "Nyloo_肘可",
+        "role": "道具辅助手",
+        "rank": "",
+        "avatar": "assets/avatar-zhouke.jpg",
+        "main": [
+          "沙鹰",
+          "道具"
+        ],
+        "bio": "沙鹰最豪之人。最好的队内气氛调节者。",
+        "stats": {},
+        "link": "https://dawan.net"
+      },
+      {
+        "id": "X1aofeng",
+        "name": "X1aofeng",
+        "role": "Rifler",
+        "rank": "",
+        "avatar": "assets/avatar-x1aofeng.jpg",
+        "main": [
+          "AK"
+        ],
+        "bio": "雄山峻壑终踏过，须信寒过总是春。常用枪械 AK。",
+        "stats": {},
+        "link": "https://dawan.net"
+      },
+      {
+        "id": "廾匸",
+        "name": "廾匸",
+        "role": "自由人",
+        "rank": "",
+        "avatar": "assets/avatar-gongxi.jpg",
+        "main": [],
+        "bio": "十分哟西。",
+        "stats": {},
+        "link": "https://dawan.net"
+      },
+      {
+        "id": "RJ-夕寸舟",
+        "name": "RJ-夕寸舟",
+        "role": "指挥",
+        "rank": "",
+        "avatar": "assets/avatar-rj.svg",
+        "main": [],
+        "bio": "老马牛逼。",
+        "stats": {},
+        "link": "https://dawan.net"
+      },
+      {
+        "id": "金坷垃",
+        "name": "金坷垃",
+        "role": "突破手",
+        "rank": "",
+        "avatar": "assets/avatar-jinkela.svg",
+        "main": [],
+        "bio": "猴头。",
+        "stats": {},
+        "link": "https://dawan.net"
+      },
+      {
+        "id": "大肥鱼",
+        "name": "大肥鱼",
+        "role": "后勤",
+        "rank": "",
+        "avatar": "assets/avatar-dafeiyu.svg",
+        "main": [],
+        "bio": "不打 CS，但队里的事我都管。",
+        "stats": {},
+        "link": ""
+      }
+    ]
+  },
+  "footer": {
+    "note": "本站为纯静态页面，内容以 JSON 维护。",
+    "copyright": "© 2025 NYLOO"
+  }
+}
